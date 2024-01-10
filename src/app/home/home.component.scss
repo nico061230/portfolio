@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+.custom-style{
+    font-family: 'Raleway', sans-serif;
+}
+.custom-delay {
+  animation-delay: 250ms;
+}
+
+
+.lines {
+  height: 100%;
+  position: relative;
+}
+.line {
+  height: inherit;
+  width: 2px;
+
+  position: absolute;
+
+  background: #eeecf0;
+
+  &.l--0 {
+    left: 0;
+  }
+  &.l--25 {
+    left: 25%;
+  }
+  &.l--50 {
+    left: 50%;
+  }
+  &.l--75 {
+    left: 75%;
+  }
+  &.l--100 {
+    left: calc(100% - 1px);
+  }
+}
+.line__label {
+  display: block;
+  width: 100px;
+  text-align: center;
+
+  position: absolute;
+  bottom: -20px;
+  right: -50px;
+
+  &.title {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
+
+@mixin stagger-anim-delay($i, $initial-delay, $stagger-delay) {
+  @while $i > 0 {
+    &:nth-of-type(#{$i}) {
+      animation-delay: $initial-delay + $stagger-delay * $i;
+    }
+    $i: $i - 1;
+  }
+}
+
+.bar {
+
+  li{@include stagger-anim-delay(8, 0s, 0.2s);}
+  
+}
